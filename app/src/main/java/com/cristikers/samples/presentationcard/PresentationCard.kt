@@ -1,6 +1,8 @@
 package com.cristikers.samples.presentationcard
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,12 +29,15 @@ fun PresentationCard(modifier: Modifier = Modifier, name: String, title: String)
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        var roundedShape = RoundedCornerShape(24.dp)
         Image(
-            painter = painterResource(R.drawable.foto),
+            painter = painterResource(R.drawable.batman),
             contentDescription = stringResource(R.string.foto_desc),
             modifier = Modifier
                 .size(200.dp)
-                .clip(RoundedCornerShape(24.dp))
+                .clip(roundedShape)
+                .border(BorderStroke(1.dp, Color.Black), roundedShape)
         )
 
         Text(
@@ -49,8 +55,8 @@ fun PresentationCard(modifier: Modifier = Modifier, name: String, title: String)
 
 @Preview(showBackground = true)
 @Composable
-private fun PresentationCardPreview(){
+private fun PresentationCardPreview() {
     ComposePresentationCardTheme {
-        PresentationCard(name = "Cristina Cares", title = "Mobile developer")
+        PresentationCard(name = "Batman", title = "Justiciero")
     }
 }
